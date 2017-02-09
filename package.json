@@ -1,7 +1,7 @@
 {
-  "name": "youtube-cli",
+  "name": "youtube-util",
   "version": "1.0.0",
-  "description": "Youtube command line tool for searching and downloading",
+  "description": "Youtube command line tool for searching and downloading and other utils",
   "main": "youtube-cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
