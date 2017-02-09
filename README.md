@@ -1,6 +1,4 @@
 # youtube-search-download
-
-
 CLI tool for searching and/or downloading from youtube
 
 usage : $node youtube-util.js -sd [key-word-to-search-in-youtube]
@@ -10,4 +8,3 @@ usage : $node youtube-util.js -s [key-word]
 Will search in youtube for the keyword (check youtube api for return value)
 
 usage : $node youtube-util.js -d [url]
-Will download the video front he given URL  into the /dwonloads/ folder
