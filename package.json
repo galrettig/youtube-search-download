@@ -1,0 +1,28 @@
+{
+  "name": "youtube-cli",
+  "version": "1.0.0",
+  "description": "Youtube command line tool for searching and downloading",
+  "main": "youtube-cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/galrettig/youtube-search-download.git"
+  },
+  "keywords": [
+    "youtube",
+    "youtube-search",
+    "youtube-download"
+  ],
+  "author": "Gal Rettig",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/galrettig/youtube-search-download/issues"
+  },
+  "homepage": "https://github.com/galrettig/youtube-search-download#readme",
+  "dependencies": {
+    "youtube-search": "^1.0.8",
+    "ytdl-core": "^0.8.1"
+  }
+}
