@@ -2,7 +2,7 @@
   "name": "youtube-util",
   "version": "1.0.4",
   "description": "Youtube command line tool for searching and downloading and other utils",
-  "main": "index.json",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
