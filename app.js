@@ -94,13 +94,18 @@ ytdns.search_and_download = function (args) {
     function cb (res){
         //search found something
         if(res.length > 0){
+            var saveAs;
             // received option to download a different item then 0 in the list
             if(index != null) {
                 console.log(res[i]);
-                that.download([res[i].link, that.handle_file_name(res[i].title) + ".mp4"]);
+                //saveAs = that.handle_file_name(res[i].title);
+                saveAs = that.handle_file_name(args[0]);
+                that.download([res[i].link, saveAs + ".mp4"]);
             } else {
                 console.log(res[0]);
-                that.download([res[0].link, that.handle_file_name(res[0].title) + ".mp4"]);
+                //saveAs = that.handle_file_name(res[0].title);
+                saveAs = that.handle_file_name(args[0]);//TODO fix name
+                that.download([res[0].link,  saveAs + ".mp4"]);
             }
         }
     };
