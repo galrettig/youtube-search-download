@@ -5,7 +5,6 @@ Youtube-Api-Key is needed(you can easily get one in 5minutes from google-api)
 ###config.json , replace "your-api-key" with your api key, save and you are ready to go.
 ```
 {"api-key":"Your-api-key"} 
-
 ```
 
 ```
