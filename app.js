@@ -78,7 +78,7 @@ ytdns.search = function (args,cb) {
 ytdns.download = function (args) {
     var url = args[0];
     var video_name = args[1];
-    this.yt(url).pipe(this.fs.createWriteStream("./downloads/" + video_name));
+    this.yt(url, { filter: function(format) { return format.container === 'mp4'; }}).pipe(this.fs.createWriteStream("./downloads/" + video_name));
 
 };
 //-sd key_word
@@ -98,13 +98,13 @@ ytdns.search_and_download = function (args) {
             // received option to download a different item then 0 in the list
             if(index != null) {
                 console.log(res[i]);
-                //saveAs = that.handle_file_name(res[i].title);
-                saveAs = that.handle_file_name(args[0]);
+                saveAs = that.handle_file_name(res[i].title);
+                //saveAs = that.handle_file_name(args[0]);
                 that.download([res[i].link, saveAs + ".mp4"]);
             } else {
                 console.log(res[0]);
-                //saveAs = that.handle_file_name(res[0].title);
-                saveAs = that.handle_file_name(args[0]);//TODO fix name
+                saveAs = that.handle_file_name(res[0].title);
+                //saveAs = that.handle_file_name(args[0]);//TODO fix name
                 that.download([res[0].link,  saveAs + ".mp4"]);
             }
         }
