@@ -1,6 +1,6 @@
 {
   "name": "youtube-util",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Youtube command line tool for searching and downloading and other utils",
   "main": "index.js",
   "scripts": {
