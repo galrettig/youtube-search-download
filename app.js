@@ -99,12 +99,10 @@ ytdns.search_and_download = function (args) {
             if(index != null) {
                 console.log(res[i]);
                 saveAs = that.handle_file_name(res[i].title);
-                //saveAs = that.handle_file_name(args[0]);
                 that.download([res[i].link, saveAs + ".mp4"]);
             } else {
                 console.log(res[0]);
                 saveAs = that.handle_file_name(res[0].title);
-                //saveAs = that.handle_file_name(args[0]);//TODO fix name
                 that.download([res[0].link,  saveAs + ".mp4"]);
             }
         }
