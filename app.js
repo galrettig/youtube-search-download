@@ -12,6 +12,11 @@ var ytdns = {
     yt : require('ytdl-core'),
     yts : require('youtube-search'),
     fs : require('fs'),
+    reader : (function(){
+        var rl = require('readline').createInterface({input:process.stdin, output:process.stdout, prompt:"yt-util>"});
+        rl.prompt();
+        return rl;
+    })(),
     opts : {maxResults: 5, key: ""}
 };
 
@@ -45,38 +50,6 @@ ytdns.handle_args = function(args){
     }
 };
 
-ytdns.stream_list = function(list){
-    var that = this;
-    var inner = function(list, i){
-        var current = list[i];
-        var prev = i > 0 ? list[i - 1] : null;
-        if(list.length > i) {
-            return {current: list[i], next: inner(list, i + 1), previous: prev};
-        } else {
-            return null;
-        }
-    };
-    return inner(list,0);
-};
-
-ytdns.cli_iterate_list = function (list, arg) {
-  var l = this.stream_list(list);
-  switch (arg){
-      case "p":
-          // do previous
-          break;
-      case "n":
-          // do next
-          break;
-      case "c":
-          // do current
-          break;
-      default:
-          // do default(current)
-          break;
-  }
-
-};
 
 /**
  *
@@ -145,6 +118,59 @@ ytdns.handle_file_name = function(fname){
     var s = fname.replace(/[^A-Za-z0-9]/gi, "_");
     s = s.replace(/__/gi,"_");
     return s;
+};
+
+
+ytdns.stream_list = function(list){
+    var that = this;
+    var inner = function(list, i){
+        var current = list[i];
+        var prev = i > 0 ? list[i - 1] : null;
+        if(list.length > i) {
+            return {current: list[i], next: inner(list, i + 1), previous: prev, index:i};
+        } else {
+            return null;
+        }
+    };
+    return inner(list,0);
+};
+
+
+
+ytdns.iterate_list = function (l, arg) {
+    switch (arg){
+        case "p":
+            // do previous
+            l = l.previous;
+            break;
+        case "n":
+            // do next
+            l = l.next;
+            break;
+        case "c":
+            // do current - like doing nothing
+            l = l.current;
+            break;
+        default:
+            // do default(current)
+            l = l.current;
+            break;
+    }
+    return l;
+
+};
+
+
+ytdns.choose_from_list = function (list_stream) {
+
+    this.reader.question(list_stream.current, function(answer){
+        var temp = this.iterate_list(list_stream, answer);
+        if(temp.index === list_stream.index){
+            // stop walk
+        } else {
+            this.choose_from_list(temp);
+        }
+    });
 };
 
 module.exports = ytdns;
