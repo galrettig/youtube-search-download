@@ -45,6 +45,39 @@ ytdns.handle_args = function(args){
     }
 };
 
+ytdns.stream_list = function(list){
+    var that = this;
+    var inner = function(list, i){
+        var current = list[i];
+        var prev = i > 0 ? list[i - 1] : null;
+        if(list.length > i) {
+            return {current: list[i], next: inner(list, i + 1), previous: prev};
+        } else {
+            return null;
+        }
+    };
+    return inner(list,0);
+};
+
+ytdns.cli_iterate_list = function (list, arg) {
+  var l = this.stream_list(list);
+  switch (arg){
+      case "p":
+          // do previous
+          break;
+      case "n":
+          // do next
+          break;
+      case "c":
+          // do current
+          break;
+      default:
+          // do default(current)
+          break;
+  }
+
+};
+
 /**
  *
  * @param args - rest of the arguments, key-word to search in youtube
