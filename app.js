@@ -12,7 +12,7 @@ var ytdns = {
     yt : require('ytdl-core'),
     yts : require('youtube-search'),
     fs : require('fs'),
-    opts : {maxResults: 5, key: "YOUR-YOUTUBE-API-KEY-HERE"}
+    opts : {maxResults: 5, key: ""}
 };
 
 /**
