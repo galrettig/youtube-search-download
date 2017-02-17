@@ -1,7 +1,4 @@
 /**
- * Created by galrettig on 2/10/17.
- */
-/**
  * Created by galrettig on 2/9/17.
  * MIT license.
  */
