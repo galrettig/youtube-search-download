@@ -12,11 +12,11 @@ var ytdns = {
     yt : require('ytdl-core'),
     yts : require('youtube-search'),
     fs : require('fs'),
-    reader : (function(){
-        var rl = require('readline').createInterface({input:process.stdin, output:process.stdout, prompt:"yt-util>"});
+    /*reader : (function(){
+        var rl = require('readline').createInterface({input:process.stdin, output:null, prompt:"yt-util>"});
         rl.prompt();
         return rl;
-    })(),
+    })(),*/
     opts : {maxResults: 5, key: ""}
 };
 
@@ -69,6 +69,8 @@ ytdns.search = function (args,cb) {
             cb(results);
         } else {
             //TODO: if no callback provided call a default one,
+            console.log(results);
+
         }
     });
 
@@ -122,9 +124,7 @@ ytdns.handle_file_name = function(fname){
 
 
 ytdns.stream_list = function(list){
-    var that = this;
     var inner = function(list, i){
-        var current = list[i];
         var prev = i > 0 ? list[i - 1] : null;
         if(list.length > i) {
             return {current: list[i], next: inner(list, i + 1), previous: prev, index:i};
